@@ -18,6 +18,7 @@ plants["per_unit"] = CleanData.formula_p(plants)
 plants = CleanData.variabel_pmax(plants)
 
 ### Next step: doing the calculations
+plants = plants.sort_values(by = ["per_unit"], ascending = True)
 x = algo(load, plants)
 
 print(x)

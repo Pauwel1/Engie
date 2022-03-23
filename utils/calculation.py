@@ -1,38 +1,34 @@
 
 
 def algo(load, plants):
-    plants = plants.sort_values(by = ["per_unit"], ascending = True, na_position = "first")
-
     row = 0
+    produced = 0
     names = []
-    p = []
-
-    battery = plants.iloc[row, :]
-    needed = load
-
-    for i in range(len(plants)):
-        if i < row:
-            row += 1
-            rest = needed - battery["pmax"]
-            names.append(battery["name"])
-            if rest > 0:
-                battery["energy_used"] = battery["pmax"]
-                p.append(battery["energy_used"])
-            elif rest <= 0:
-                if -needed > battery["pmin"]:
-                    battery["energy_used"] = battery["pmax"] + needed
-                    p.append(battery["energy_used"])
-                else:
-                    battery["energy_used"] = 0
-                    p.append(battery["energy_used"])
+    p = []   
     
+    for i in range(len(plants)):
+        if row < len(plants):
+            battery = plants.iloc[row, :]
+            names.append(battery["name"])
+            if load > produced:
+                temp = load - produced
+                if battery["pmax"] >= temp >= battery["pmin"]:
+                    used = temp
+                elif battery["pmax"] < temp:
+                    used = battery["pmax"]
+                elif battery["pmin"] > temp:
+                    used = battery["pmin"]
+                produced += used
+                p.append(used)
+            elif load <= produced:
+                used = 0
+                p.append(used)
+
+            row += 1
+        
     print(names)
-    print("###")
     print(p)
 
-    response = {}
-    for i in names:
-        for used in p:
-            response[i] = used
+    response = dict(zip(names, p))
 
     return response
