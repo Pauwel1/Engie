@@ -1,20 +1,16 @@
-from flask import jsonify, request
-import json
 
-import pandas as pd
-import numpy as np
 
 class Calculator:
     def __init__(self):
-        self = self
+        self.counter = 0
 
-    def algo(load, plants):
-        counter = load
+    def algo(self, load, plants):
         plants = plants.sort_values(by = ["per_unit"], ascending = True, na_position = "first")
+        response_df = {}
 
 
 
-        return plants
+        return response_df
         # Devide load over x pmax, giving priotity to lowest prodcost and the lowest pmin
         # So: calculate prodcost of polluters and calculate max output of windparks
 
