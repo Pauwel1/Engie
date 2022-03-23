@@ -1,7 +1,8 @@
 import json
+from re import X
 
 from utils.getParams import CleanData
-from utils.calculation import Calculator
+from utils.calculation import algo
 
 ### First we gather the data ...
 toSplit = "assets\example_payload.json"
@@ -17,10 +18,7 @@ plants["per_unit"] = CleanData.formula_p(plants)
 # recalculate the pmax for the wind turbines
 plants = CleanData.variabel_pmax(plants)
 
-
 ### Next step: doing the calculations
-### 1. add column "p" (price per unit generated)
+x = algo(load, plants)
 
-plants = Calculator.algo(load, plants)
-
-print(plants)
+print(x)

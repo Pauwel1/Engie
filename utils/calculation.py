@@ -1,20 +1,38 @@
 
 
-class Calculator:
-    def __init__(self):
-        self.counter = 0
+def algo(load, plants):
+    plants = plants.sort_values(by = ["per_unit"], ascending = True, na_position = "first")
 
-    def algo(self, load, plants):
-        plants = plants.sort_values(by = ["per_unit"], ascending = True, na_position = "first")
-        response_df = {}
+    row = 0
+    names = []
+    p = []
 
+    battery = plants.iloc[row, :]
+    needed = load
 
+    for i in range(len(plants)):
+        if i < row:
+            row += 1
+            rest = needed - battery["pmax"]
+            names.append(battery["name"])
+            if rest > 0:
+                battery["energy_used"] = battery["pmax"]
+                p.append(battery["energy_used"])
+            elif rest <= 0:
+                if -needed > battery["pmin"]:
+                    battery["energy_used"] = battery["pmax"] + needed
+                    p.append(battery["energy_used"])
+                else:
+                    battery["energy_used"] = 0
+                    p.append(battery["energy_used"])
+    
+    print(names)
+    print("###")
+    print(p)
 
-        return response_df
-        # Devide load over x pmax, giving priotity to lowest prodcost and the lowest pmin
-        # So: calculate prodcost of polluters and calculate max output of windparks
+    response = {}
+    for i in names:
+        for used in p:
+            response[i] = used
 
-        # polluters: 
-        # polluters:
-
-        # windparks: pmax * (100/p)
+    return response
