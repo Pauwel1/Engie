@@ -1,5 +1,4 @@
 import json
-from re import X
 
 from utils.getParams import CleanData
 from utils.calculation import algo
