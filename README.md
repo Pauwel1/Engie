@@ -23,7 +23,7 @@ Front-end dev can create buttons and checkboxes to make sure that the input is a
 
 "streamlit run demo_local.py" in terminal
 
-You will be directed to a local host website, where you can drag and drop a .json file, prohibited it is constructed in the correct way (e.g.: assets/example_payload.json). Power plants can be added or deleted at will.
+You will be directed to a local host website, where you can drag and drop a .json file, if it is constructed in the correct way (e.g.: assets/example_payload.json). Power plants can be added or deleted at will.
 
 #### Value:
 
