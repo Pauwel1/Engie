@@ -15,6 +15,5 @@ def toApp(toSplit):
   ### Next step: doing the calculations
   plants = plants.sort_values(by = ["per_unit"], ascending = True)
   response = algo(load, plants)
-  
-  print(response)
+
   return response
