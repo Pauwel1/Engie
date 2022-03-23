@@ -14,7 +14,7 @@ This should make it easier:
 
 Test program with Postman and e.g. assets/example_payload.json.
 
-#### Future:
+#### Value:
 
 Immediately attachable to a Dockerfile and put online with e.g. Heroku.  
 Front-end dev can create buttons and checkboxes to make sure that the input is always the same format and internal structure.
@@ -25,7 +25,7 @@ Front-end dev can create buttons and checkboxes to make sure that the input is a
 
 You will be directed to a local host website, where you can drag and drop a .json file, prohibited it is constructed in the correct way (e.g.: assets/example_payload.json). Power plants can be added or deleted at will.
 
-### Future:
+#### Value:
 
 Easily useable as an offline application.
 
