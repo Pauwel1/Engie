@@ -1,5 +1,3 @@
-
-
 def algo(load, plants):
     row = 0
     produced = 0
