@@ -8,16 +8,10 @@ class Calculator:
     def __init__(self):
         self = self
 
-    def formula_p(plants : pd.DataFrame):
-        for item in plants["name"]:
-            unitPrice = plants["cost"]
-            efficiency = plants["efficiency"]
-            p = unitPrice * (1/efficiency)
-            return p
-
     def algo(load, plants):
         counter = load
         plants = plants.sort_values(by = ["per_unit"], ascending = True, na_position = "first")
+
 
 
         return plants

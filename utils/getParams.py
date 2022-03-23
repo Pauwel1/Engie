@@ -34,6 +34,13 @@ class CleanData:
         plants["cost"] = cost
         plants["var"] = var
         return plants
+
+    def formula_p(plants : pd.DataFrame):
+        for item in plants["name"]:
+            unitPrice = plants["cost"]
+            efficiency = plants["efficiency"]
+            p = unitPrice * (1/efficiency)
+            return p
     
     def variabel_pmax(plants):
         plants["pmax"] = (plants["pmax"] * plants["var"]) / 100
