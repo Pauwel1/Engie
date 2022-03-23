@@ -25,9 +25,6 @@ def algo(load, plants):
                 p.append(used)
 
             row += 1
-        
-    print(names)
-    print(p)
 
     response = dict(zip(names, p))
 

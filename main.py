@@ -1,10 +1,9 @@
 from flask import Flask, request, jsonify
-import json
 import os
-
-from utils.calculation import Calculator
-from utils.getParams import cleanData
 from flask_cors import CORS
+
+from utils.getParams import CleanData
+from utils.calculation import algo
 
 
 app = Flask(__name__)
@@ -18,15 +17,24 @@ def check():
 
 @app.route("/payload/", methods = ["POST"])
 def get_response():
-    data = request.get_data()
+    ### Collect the data and split them in separate df's ...
+    toSplit = request.get_json()
 
-    toSplit = request.get_json(data)
+    load, fuels, plants = CleanData.separate_data(toSplit)
 
-    load, fuels, plant = cleanData.separate_data(toSplit)
+    ### ... and organize/clean them:
+    # take the conditions price and average wind strength into account
+    plants = CleanData.conditions(fuels, plants)
+    plants["per_unit"] = CleanData.formula_p(plants)
+    # recalculate the pmax for the wind turbines
+    plants = CleanData.variabel_pmax(plants)
 
-    response = Calculator.create_new_df(load, fuels, plant)
-    
+    ### Next step: doing the calculations
+    plants = plants.sort_values(by = ["per_unit"], ascending = True)
+    response = algo(load, plants)
+
     return response
+
 
 
 if __name__ == "__main__":
