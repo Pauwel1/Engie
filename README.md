@@ -5,6 +5,13 @@
 As it is a project under construction, you need to clone the repository in order to test-run. You can find the necessary libraries in requirements.txt.
 
 
+This should make it easier:
+
+"pip3 install Flask Flask-Cors streamlit pandas"
+
+
+
+
 First way to run:
 
 "python app.py" in terminal
@@ -13,9 +20,8 @@ test program with Postman and e.g. assets/example_payload.json.
 
 
 
-Second way to run:
 
-To try this way, you need to install the Streamlit library as well.
+Second way to run:
 
 "streamlit run demo_local.py"
 
