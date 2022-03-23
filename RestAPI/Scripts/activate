@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\pdewilde\documents\projects\Engie\RestAPI"
+VIRTUAL_ENV="C:\Users\pdewilde\Documents\GitHub\PowerplantCodingChallange\RestAPI"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
